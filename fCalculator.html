@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>HTML Calculator</title>
+
+<style>
+.number-button {
+	width: 150px;
+	height:100px; 
+	font-size: 40pt;
+
+
+}
+.equal-button {
+	width: 612px;
+	height:100px; 
+	font-size: 40pt;
+
+
+}
+.textbox{
+	width: 612px;
+	height: 100px;
+	font-size: 40pt;
+	text-align: right;
+}
+
+#calculator {
+	text-align: center;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$(".textbox").keydown(function (e) {
+		window.status="No alpha characters allowed.";
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
+</script>
+</head>
+<body>
+<form name="calculator" id="calculator" >
+<h1>My Simple calculator!</h1>
+<br> <input type="textfield" name="ans" value="" class="textbox"><br>
+<input type="button" value="1" onClick="document.calculator.ans.value+='1'" class="number-button">
+<input type="button" value="2" onClick="document.calculator.ans.value+='2'"  class="number-button">
+<input type="button" value="3" onClick="document.calculator.ans.value+='3'"  class="number-button">
+<input type="button" value="+" onClick="document.calculator.ans.value+='+'"  class="number-button"><br>
+ 
+<input type="button" value="4" onClick="document.calculator.ans.value+='4'" class="number-button">
+<input type="button" value="5" onClick="document.calculator.ans.value+='5'" class="number-button">
+<input type="button" value="6" onClick="document.calculator.ans.value+='6'" class="number-button">
+<input type="button" value="-" onClick="document.calculator.ans.value+='-'" class="number-button"><br>
+ 
+<input type="button" value="7" onClick="document.calculator.ans.value+='7'" class="number-button">
+<input type="button" value="8" onClick="document.calculator.ans.value+='8'" class="number-button">
+<input type="button" value="9" onClick="document.calculator.ans.value+='9'" class="number-button">
+<input type="button" value="*" onClick="document.calculator.ans.value+='*'" class="number-button"><br>
+
+<input type="Reset" value="C" class="number-button">
+<input type="button" value="0" onClick="document.calculator.ans.value+='0'" class="number-button">
+<input type="button" value="." onClick="document.calculator.ans.value+='.'" class="number-button">
+<input type="button" value="/" onClick="document.calculator.ans.value+='/'" class="number-button"><br/>
+<input type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)"  class="equal-button">
+</form>
+<h3 id="calculator">This is how we solve math problems.</h3> 
+
+
+</body>
+</html>
